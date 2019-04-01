@@ -28,7 +28,7 @@ public class StartupDataInit {
         this.versionRepo.save(new Version("v3"));
         this.versionRepo.save(new Version("v4"));
 
-        this.collegueRepo.save(new Collegue(1, 5000, "palmtree","https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Emblem_of_Saudi_Arabia.svg/250px-Emblem_of_Saudi_Arabia.svg.png", 100));
+        // this.collegueRepo.save(new Collegue(1, 5000, "palmtree","https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Emblem_of_Saudi_Arabia.svg/250px-Emblem_of_Saudi_Arabia.svg.png", 100));
 
     }
 }

@@ -48,9 +48,16 @@ public class CollegueCtrl {
 //         return this.collectionRepo.findByPseudo(pseudo).orElseThrow(() -> new RuntimeException("lol"));
 //     } 
 
+    @PostMapping
+    public void OutputFiltersertCollegue(@RequestBody NewCollegue collegue) {
+      this.collegueService.save(this.newCollegueService.getNewCollegues(collegue)) ;
+    }
+
     @PatchMapping("/{pseudo}")
     public Collegue voter(@PathVariable String pseudo, @RequestBody Votes vote) {
         // return this.collectionRepo.findByPseudo(pseudo).orElseThrow( () -> new RuntimeException("plop"));
         return this.collectionService.voter(pseudo, vote.getAvis());
     } 
+
+  
 }
