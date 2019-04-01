@@ -25,11 +25,16 @@ public class CollegueService {
         return colRepo.findAll();
     }
 
+    public Collegue findByPseudo(String pseudo){
+        return this.colRepo.findByPseudo(pseudo)
+                .orElseThrow(() -> new TopCollegueException("Personne supprimée"));
+    }
+
     @Transactional
     public Collegue voter(String pseudo, Avis avis) {
 
         if(pseudo == null || avis == null) {
-            throw new TopCollegueException("Au moins un");
+            throw new TopCollegueException("Au moins un paramètre non valorisé");
         }
 
         Collegue collegueTrouve = this.colRepo.findByPseudo(pseudo).orElseThrow(() -> new TopCollegueException("pseudo inexistant"));
@@ -46,6 +51,10 @@ public class CollegueService {
     }
 
     public  void save(Collegue newCollegues) {
+        if(this.colRepo.findByPseudo(newCollegues.getPseudo()).isPresent()){
+            throw new TopCollegueException("le pseudo " + newCollegues.getPseudo() + " existe déjà");
+            } else {
         this.colRepo.save(newCollegues);
+        }
 	}
 }

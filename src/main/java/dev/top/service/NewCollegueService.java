@@ -17,13 +17,17 @@ public class NewCollegueService<NewCollegueRepo> {
         NewCollegue[] result = restTemplate.getForObject(uri, NewCollegue[].class);
         Collegue newCol = new Collegue();
         if (result.length==0) {
-            throw new TopCollegueException("le matricule saisi n'existe pas");
+            throw new TopCollegueException("Le matricule n'est pas trouvé");
         }else{
-            if (c.getPhoto()==null ){
+            if (c.getPhoto()==null || c.getPhoto().isEmpty()){
                 newCol.setPhoto(result[0].getPhoto());
+            } else {
+                newCol.setPhoto(c.getPhoto());
             }
             newCol.setPseudo(c.getNom());
             newCol.setScore(100);
+            newCol.setEmail(result[0].getEmail());
+            newCol.setPrenom(result[0].getPrenom());
         }
         return newCol;
     }

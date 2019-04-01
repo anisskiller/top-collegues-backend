@@ -16,15 +16,23 @@ public class Collegue {
     private Integer score;
     private String photo;
     private String pseudo;
+    private String email;
+    private String prenom;
 
-    public Collegue(Integer id, String pseudo,String photo,Integer score) {
-        this.id = id;
+    public Collegue() {}
+
+    public Collegue(String pseudo, String photo, Integer score) {
         this.pseudo = pseudo;
         this.photo = photo;
         this.score = score;
     }
     
-    public Collegue() {
+    public Collegue(String nom, String prenom, String photo,String email) {
+        this.pseudo = nom;
+        this.prenom = prenom;
+        this.email = email;
+        this.photo = photo;
+        this.score = 100;
     }
 
     /**
@@ -81,6 +89,40 @@ public class Collegue {
      */
     public void setPseudo(String pseudo) {
         this.pseudo = pseudo;
+    }
+
+
+    @Override
+    public String toString() {
+        return this.photo + "  "+ this.pseudo +" " +this.pseudo+ " "+ this.score;
+    }
+
+    /**
+     * @return le prenom
+     */
+    public String getPrenom() {
+        return prenom;
+    }
+
+    /**
+     * @param prenom le prenom à modifier
+     */
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
+
+    /**
+     * @return l'email
+     */
+    public String getEmail() {
+        return email;
+    }
+
+    /**
+     * @param email l'email à modifier
+     */
+    public void setEmail(String email) {
+        this.email = email;
     }
 
 }

@@ -2,6 +2,8 @@ package dev.top.exception;
 
 public class TopCollegueException extends RuntimeException {
 
+    private static final long serialVersionUID = 1L;
+
     public TopCollegueException() {
         super();
     }
